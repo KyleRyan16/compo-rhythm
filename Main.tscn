@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://oynmr6lxwidd"]
+
+[ext_resource type="Script" uid="uid://cs7ur432qjm7v" path="res://Scripts/main.gd" id="1_fos0i"]
+[ext_resource type="PackedScene" uid="uid://dkiepfhbgdh3q" path="res://example_event_source.tscn" id="4_cm0pq"]
+[ext_resource type="PackedScene" uid="uid://dry8gufuf4jb" path="res://conductor.tscn" id="5_fos0i"]
+[ext_resource type="PackedScene" uid="uid://dif2dsqo04tmk" path="res://player_character.tscn" id="6_3dxm6"]
+[ext_resource type="PackedScene" uid="uid://bkumi1yk5hym2" path="res://floor.tscn" id="7_lgr22"]
+
+[node name="Main" type="Node" unique_id=1939485485]
+script = ExtResource("1_fos0i")
+
+[node name="TestEventSource" parent="." unique_id=1791167107 instance=ExtResource("4_cm0pq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8675723, 0.8721523, -0.93685985)
+
+[node name="conductor" parent="." unique_id=1406137218 instance=ExtResource("5_fos0i")]
+script = null
+
+[node name="CharacterBody3D" parent="." unique_id=1841788958 instance=ExtResource("6_3dxm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2945552, 0.079)
+
+[node name="Area3D" parent="." unique_id=2119908304 instance=ExtResource("7_lgr22")]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1792867621]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 5.8906145, 0.7795086)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D" unique_id=1075270866]

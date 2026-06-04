@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dry8gufuf4jb"]
+
+[ext_resource type="Script" uid="uid://bx07fqttcpv6" path="res://Scripts/conductor.gd" id="1_dbxwv"]
+[ext_resource type="Script" uid="uid://2rp2p3vh772j" path="res://Scripts/timing_track.gd" id="2_ii0ch"]
+[ext_resource type="AudioStream" uid="uid://b1cbkpwqahma7" path="res://Perc_MetronomeQuartz_hi.wav" id="3_x67ht"]
+[ext_resource type="Script" uid="uid://dpes0xc1mj66k" path="res://Scripts/metronome.gd" id="4_x67ht"]
+
+[node name="Conductor" type="AudioStreamPlayer" unique_id=967332129]
+process_mode = 3
+script = ExtResource("1_dbxwv")
+
+[node name="TimingTrack" type="Node" parent="." unique_id=1403991916]
+script = ExtResource("2_ii0ch")
+metadata/_custom_type_script = "uid://2rp2p3vh772j"
+
+[node name="Metronome" type="AudioStreamPlayer" parent="." unique_id=1850760269]
+stream = ExtResource("3_x67ht")
+script = ExtResource("4_x67ht")
