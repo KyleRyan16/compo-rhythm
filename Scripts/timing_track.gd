@@ -45,7 +45,8 @@ func process_beat(current_beat : float):
 		
 
 func get_timing_result(current_beat : float, event_beat : float) -> RuleSet.EventResult:
-	var time_diff_ms : float = get_time_diff_ms(current_beat, event_beat)
+	var time_diff_ms : float = abs(get_time_diff_ms(current_beat, event_beat))
+	print(time_diff_ms)
 	for timing_window in RuleSet.timing_windows_ms:
 		if time_diff_ms <= timing_window:
 			return RuleSet.timing_windows_ms[timing_window]

@@ -1,13 +1,18 @@
 [gd_scene format=3 uid="uid://dry8gufuf4jb"]
 
 [ext_resource type="Script" uid="uid://bx07fqttcpv6" path="res://Scripts/conductor.gd" id="1_dbxwv"]
+[ext_resource type="AudioStream" uid="uid://dta5ihjfscdjx" path="res://the_comeback2.ogg" id="1_s6bxt"]
 [ext_resource type="Script" uid="uid://2rp2p3vh772j" path="res://Scripts/timing_track.gd" id="2_ii0ch"]
 [ext_resource type="AudioStream" uid="uid://b1cbkpwqahma7" path="res://Perc_MetronomeQuartz_hi.wav" id="3_x67ht"]
 [ext_resource type="Script" uid="uid://dpes0xc1mj66k" path="res://Scripts/metronome.gd" id="4_x67ht"]
 
 [node name="Conductor" type="AudioStreamPlayer" unique_id=967332129]
 process_mode = 3
+stream = ExtResource("1_s6bxt")
+volume_db = -12.0
 script = ExtResource("1_dbxwv")
+bpm = 116.0
+first_beat_offset_ms = 8283
 
 [node name="TimingTrack" type="Node" parent="." unique_id=1403991916]
 script = ExtResource("2_ii0ch")

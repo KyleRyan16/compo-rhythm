@@ -22,4 +22,6 @@ func _process(_delta: float) -> void:
 
 
 func start() -> void:
+	var curr_beat : float = Conductor.get_current_beat() + _cached_latency
+	_last_beat = max(_last_beat, curr_beat)
 	_playing = true

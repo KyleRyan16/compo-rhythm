@@ -10,7 +10,28 @@
 script = ExtResource("1_fos0i")
 
 [node name="TestEventSource" parent="." unique_id=1791167107 instance=ExtResource("4_cm0pq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8675723, 0.8721523, -0.93685985)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13242769, 0.8721523, -1.7902644)
+
+[node name="TestEventSource4" parent="." unique_id=1141127894 instance=ExtResource("4_cm0pq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6285615, 0.8721523, -1.7902644)
+
+[node name="TestEventSource5" parent="." unique_id=243532386 instance=ExtResource("4_cm0pq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6058908, 0.8721523, -1.7902644)
+
+[node name="TestEventSource6" parent="." unique_id=530290499 instance=ExtResource("4_cm0pq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6058908, 0.8721523, 0.3722129)
+
+[node name="TestEventSource7" parent="." unique_id=211255731 instance=ExtResource("4_cm0pq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4127545, 0.8721523, 0.3722129)
+
+[node name="TestEventSource8" parent="." unique_id=964772083 instance=ExtResource("4_cm0pq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4127545, 0.8721523, 4.0001864)
+
+[node name="TestEventSource2" parent="." unique_id=743710958 instance=ExtResource("4_cm0pq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8675723, 0.8721523, 1.038768)
+
+[node name="TestEventSource3" parent="." unique_id=1786509375 instance=ExtResource("4_cm0pq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.94972134, 0.8721523, 2.4848394)
 
 [node name="conductor" parent="." unique_id=1406137218 instance=ExtResource("5_fos0i")]
 script = null
