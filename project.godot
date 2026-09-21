@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Test="*uid://cu67n5v54tfkg"
 Conductor="*uid://dry8gufuf4jb"
 RuleSet="*uid://jrhwhdiww15m"
 

@@ -38,6 +38,8 @@ func _on_area_3d_body_shape_exited(body_rid: RID, body: Node3D, body_shape_index
 	
 func queue_event():
 	var event : BeatEvent = Conductor.add_event_to_track(1)
+	if !event:
+		return
 	event.result.connect(process_beat_event)
 	event.update.connect(process_status_update)
 	events.get_or_add(event.beat, event)

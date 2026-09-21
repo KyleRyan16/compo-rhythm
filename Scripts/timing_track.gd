@@ -2,6 +2,10 @@ extends Node
 
 class_name TimingTrack
 
+@onready var sound_hit_perfect : AudioStreamPlayer = $"../BeatHitPerfect"
+@onready var sound_hit : AudioStreamPlayer = $"../BeatHit"
+@onready var sound_missed : AudioStreamPlayer = $"../BeatMissed"
+
 class BeatEvents :
 	func UpdateStatus(new_status : RuleSet.WindowStatus):
 		_status = new_status
@@ -27,6 +31,15 @@ func attempt_events(current_beat : float):
 		for beat_event in queued_events.get(timestamp).events:
 			beat_event.result.emit(beat_event, timing_result)
 			queued_events.erase(timestamp)
+	
+		match timing_result:
+			RuleSet.EventResult.PERFECT:
+				sound_hit_perfect.play()
+			RuleSet.EventResult.GOOD:
+				sound_hit.play()
+			RuleSet.EventResult.MISSED:
+				sound_missed.play()
+	
 
 func process_beat(current_beat : float):
 	for event_beat in queued_events:
@@ -42,6 +55,7 @@ func process_beat(current_beat : float):
 			for event in queued_events[event_beat].events:
 				event.result.emit(event, RuleSet.EventResult.MISSED)
 				queued_events.erase(event_beat)
+				sound_missed.play()
 		
 
 func get_timing_result(current_beat : float, event_beat : float) -> RuleSet.EventResult:
