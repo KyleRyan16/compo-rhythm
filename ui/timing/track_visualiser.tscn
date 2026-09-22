@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://b8l4ac8wswerd"]
+
+[ext_resource type="Script" uid="uid://c3nx75fpeocjf" path="res://ui/timing/track_visualiser.gd" id="1_iadlq"]
+[ext_resource type="PackedScene" uid="uid://c04dwp7xiwwnq" path="res://ui/timing/track_visual.tscn" id="2_ut5dh"]
+[ext_resource type="PackedScene" uid="uid://5fj4r3ump32d" path="res://ui/timing/beat_event_visual.tscn" id="3_jmu6e"]
+
+[node name="TrackVisualiser" type="Control" unique_id=30971489]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_iadlq")
+visual_template = ExtResource("3_jmu6e")
+
+[node name="Track" parent="." unique_id=1897080924 instance=ExtResource("2_ut5dh")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -2.0
+offset_top = 20.0
+offset_right = 2.0
+offset_bottom = 69.99998
+grow_horizontal = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+color = Color(1, 1, 1, 0.4509804)
+
+[node name="Beats" type="Control" parent="Track" unique_id=59280525]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2

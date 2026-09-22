@@ -6,6 +6,8 @@ class_name TimingTrack
 @onready var sound_hit : AudioStreamPlayer = $"../BeatHit"
 @onready var sound_missed : AudioStreamPlayer = $"../BeatMissed"
 
+signal event_added(event : BeatEvent)
+
 class BeatEvents :
 	func UpdateStatus(new_status : RuleSet.WindowStatus):
 		_status = new_status
@@ -15,22 +17,26 @@ class BeatEvents :
 	var events : Array[BeatEvent] = []
 
 # all events that have been queued up [time][events]
-var queued_events : Dictionary[float, BeatEvents]
+var _queued_events : Dictionary[float, BeatEvents]
+
+func get_queued_events() -> Dictionary[float, BeatEvents]:
+	return _queued_events
 
 # The timing track is an updatable list of ACTIVE beat events
 func add_event(event: BeatEvent):
-	queued_events.get_or_add(event.beat, BeatEvents.new())
-	queued_events[event.beat].events.append(event)
+	_queued_events.get_or_add(event.beat, BeatEvents.new())
+	_queued_events[event.beat].events.append(event)
+	event_added.emit(event)
 
 func attempt_events(current_beat : float):
-	for timestamp in queued_events:
-		if queued_events[timestamp]._status != RuleSet.WindowStatus.OPEN:
+	for timestamp in _queued_events:
+		if _queued_events[timestamp]._status != RuleSet.WindowStatus.OPEN:
 			return
 			
 		var timing_result := get_timing_result(current_beat, timestamp)
-		for beat_event in queued_events.get(timestamp).events:
+		for beat_event in _queued_events.get(timestamp).events:
 			beat_event.result.emit(beat_event, timing_result)
-			queued_events.erase(timestamp)
+			_queued_events.erase(timestamp)
 	
 		match timing_result:
 			RuleSet.EventResult.PERFECT:
@@ -42,19 +48,19 @@ func attempt_events(current_beat : float):
 	
 
 func process_beat(current_beat : float):
-	for event_beat in queued_events:
+	for event_beat in _queued_events:
 		
 		var time_diff_ms : float = get_time_diff_ms(current_beat, event_beat)
 		var new_status := get_beat_status_from_ms(time_diff_ms)
 		
-		if queued_events[event_beat]._status == new_status:
+		if _queued_events[event_beat]._status == new_status:
 			continue
 		
-		queued_events[event_beat].UpdateStatus(new_status)
+		_queued_events[event_beat].UpdateStatus(new_status)
 		if (new_status == RuleSet.WindowStatus.CLOSED && time_diff_ms > 0):
-			for event in queued_events[event_beat].events:
+			for event in _queued_events[event_beat].events:
 				event.result.emit(event, RuleSet.EventResult.MISSED)
-				queued_events.erase(event_beat)
+				_queued_events.erase(event_beat)
 				sound_missed.play()
 		
 
@@ -83,5 +89,5 @@ func get_beat_status_from_ms(time_diff_ms : float) -> RuleSet.WindowStatus:
 	return RuleSet.WindowStatus.CLOSED
 	
 	
-func get_time_diff_ms(current_beat : float, event_beat: float):
+func get_time_diff_ms(current_beat : float, event_beat: float) -> float:
 	return Conductor.get_beat_time(current_beat - event_beat) * 1000

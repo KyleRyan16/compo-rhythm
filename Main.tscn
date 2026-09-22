@@ -7,9 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://dif2dsqo04tmk" path="res://player_character.tscn" id="6_3dxm6"]
 [ext_resource type="PackedScene" uid="uid://5k2xvjhvmdnx" path="res://hud.tscn" id="6_lgr22"]
 [ext_resource type="PackedScene" uid="uid://bkumi1yk5hym2" path="res://floor.tscn" id="7_lgr22"]
+[ext_resource type="PackedScene" uid="uid://b8l4ac8wswerd" path="res://ui/timing/track_visualiser.tscn" id="8_trn2v"]
 
 [node name="Main" type="Node" unique_id=1939485485]
 script = ExtResource("1_fos0i")
+
+[node name="conductor" parent="." unique_id=1406137218 instance=ExtResource("5_fos0i")]
+stream = ExtResource("4_03owx")
+script = null
 
 [node name="TestEventSource" parent="." unique_id=1791167107 instance=ExtResource("4_cm0pq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13242769, 0.8721523, -1.7902644)
@@ -35,10 +40,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8675723, 0.8721523, 1.03876
 [node name="TestEventSource3" parent="." unique_id=1786509375 instance=ExtResource("4_cm0pq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.94972134, 0.8721523, 2.4848394)
 
-[node name="conductor" parent="." unique_id=1406137218 instance=ExtResource("5_fos0i")]
-stream = ExtResource("4_03owx")
-script = null
-
 [node name="CharacterBody3D" parent="." unique_id=1841788958 instance=ExtResource("6_3dxm6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2945552, 0.079)
 
@@ -50,3 +51,5 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 5
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D" unique_id=1075270866]
 
 [node name="HUD" parent="." unique_id=250146075 instance=ExtResource("6_lgr22")]
+
+[node name="TrackVisualiser" parent="." unique_id=30971489 instance=ExtResource("8_trn2v")]
