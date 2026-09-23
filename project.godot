@@ -21,6 +21,10 @@ config/icon="res://icon.svg"
 Conductor="*uid://dry8gufuf4jb"
 RuleSet="*uid://jrhwhdiww15m"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [input]
 
 acknowledge_beatddasdfasd={
