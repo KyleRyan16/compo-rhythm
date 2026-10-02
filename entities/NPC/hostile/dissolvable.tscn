@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://d0jud1gwvjjkp"]
+
+[ext_resource type="Script" uid="uid://cfwimf5qmbvbb" path="res://entities/NPC/hostile/dissolve.gd" id="1_ltv3a"]
+[ext_resource type="Shader" uid="uid://c80s3p4vesk83" path="res://common/effects/dissolve.gdshader" id="1_q6yyo"]
+[ext_resource type="Texture2D" uid="uid://c46xvf1efpphd" path="res://common/effects/perlin_noise.png" id="2_tsfbn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wb7wg"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_q6yyo")
+shader_parameter/t = 0.0
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/noise_tex = ExtResource("2_tsfbn")
+shader_parameter/noise_scale = 1.0
+shader_parameter/burn_size = 0.12999999709424
+shader_parameter/burn_emissive = 11.1999997720096
+shader_parameter/burn_color = Color(1, 0, 0, 1)
+shader_parameter/impact_position = Vector3(0.5, 0.965, 0)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_mpfnf"]
+height = 1.8
+
+[node name="Dissolvable" type="MeshInstance3D" unique_id=1344224893]
+material_override = SubResource("ShaderMaterial_wb7wg")
+mesh = SubResource("CapsuleMesh_mpfnf")
+script = ExtResource("1_ltv3a")
+metadata/_custom_type_script = "uid://cfwimf5qmbvbb"

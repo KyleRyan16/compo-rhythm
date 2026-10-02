@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Bebop Rhythm"
+config/name="BebopRhythm"
 run/main_scene="res://Main.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 run/max_fps=240
@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 
 Conductor="*uid://dry8gufuf4jb"
 RuleSet="*uid://jrhwhdiww15m"
+
+[debug_draw_3d]
+
+settings/addon_root_folder="res://addons/debug_draw_3d"
 
 [display]
 
