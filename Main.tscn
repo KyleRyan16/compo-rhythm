@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://oynmr6lxwidd"]
 
 [ext_resource type="Script" uid="uid://cs7ur432qjm7v" path="res://Scripts/main.gd" id="1_fos0i"]
-[ext_resource type="AudioStream" uid="uid://22okvim8qqvs" path="res://sound/songs/test_beat.wav" id="4_03owx"]
 [ext_resource type="PackedScene" uid="uid://dkiepfhbgdh3q" path="res://entities/NPC/hostile/example_event_source.tscn" id="4_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://dry8gufuf4jb" path="res://conductor.tscn" id="5_fos0i"]
 [ext_resource type="PackedScene" uid="uid://dif2dsqo04tmk" path="res://player_character.tscn" id="6_3dxm6"]
@@ -14,7 +13,6 @@
 script = ExtResource("1_fos0i")
 
 [node name="conductor" parent="." unique_id=1406137218 instance=ExtResource("5_fos0i")]
-stream = ExtResource("4_03owx")
 script = null
 
 [node name="TestEventSource" parent="." unique_id=1791167107 instance=ExtResource("4_cm0pq")]
