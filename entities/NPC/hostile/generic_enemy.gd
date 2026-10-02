@@ -1,6 +1,6 @@
 extends EventSource
 
-@onready var move_speed : float = 3
+@onready var move_speed : float = 3.8
 
 @onready var nav_agent : NavigationAgent3D = $NavigationAgent3D
 
