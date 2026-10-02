@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://5k2xvjhvmdnx" path="res://hud.tscn" id="6_lgr22"]
 [ext_resource type="PackedScene" uid="uid://bkumi1yk5hym2" path="res://floor.tscn" id="7_lgr22"]
 [ext_resource type="PackedScene" uid="uid://b8l4ac8wswerd" path="res://ui/timing/track_visualiser.tscn" id="8_trn2v"]
-[ext_resource type="PackedScene" uid="uid://cran6pes5ikt0" path="res://entities/NPC/hostile/generic_enemy.tscn" id="9_03owx"]
 
 [node name="Main" type="Node" unique_id=1939485485]
 script = ExtResource("1_fos0i")
@@ -15,36 +14,19 @@ script = ExtResource("1_fos0i")
 [node name="conductor" parent="." unique_id=1406137218 instance=ExtResource("5_fos0i")]
 script = null
 
-[node name="TestEventSource" parent="." unique_id=1791167107 instance=ExtResource("4_cm0pq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.71275604, 0.8721533, 13.062423)
-
-[node name="TestEventSource4" parent="." unique_id=1141127894 instance=ExtResource("4_cm0pq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8574023, 0.8721523, 15.814899)
-
-[node name="TestEventSource5" parent="." unique_id=243532386 instance=ExtResource("4_cm0pq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5788813, 0.8721533, 3.3823748)
-beat_timings = Array[float]([1.0, 0.25, 0.25, 0.25, 0.1, 0.1])
-
-[node name="TestEventSource6" parent="." unique_id=530290499 instance=ExtResource("4_cm0pq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.186219, 0.8721533, 15.224899)
-
-[node name="TestEventSource7" parent="." unique_id=211255731 instance=ExtResource("4_cm0pq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4127545, 0.8721523, 0.3722129)
-
-[node name="TestEventSource8" parent="." unique_id=964772083 instance=ExtResource("4_cm0pq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.203085, 0.8721523, 16.668682)
-
-[node name="TestEventSource2" parent="." unique_id=743710958 instance=ExtResource("4_cm0pq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.287244, 0.8721533, 15.891455)
-
-[node name="TestEventSource3" parent="." unique_id=1786509375 instance=ExtResource("4_cm0pq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7773042, 0.8721523, 14.659657)
-
 [node name="CharacterBody3D" parent="." unique_id=1841788958 instance=ExtResource("6_3dxm6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1767695, 0.079)
 
 [node name="Area3D" parent="." unique_id=2119908304 instance=ExtResource("7_lgr22")]
 transform = Transform3D(2, 0, 0, 0, 0.001, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="TestEventSource" parent="." unique_id=1791167107 instance=ExtResource("4_cm0pq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7834063, 1.0703907, 4.3115907)
+beat_timings = Array[float]([1.0, 1.0, 1.0])
+
+[node name="TestEventSource2" parent="." unique_id=663755036 instance=ExtResource("4_cm0pq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5739765, 0.6655216, -3.6762476)
+beat_timings = Array[float]([0.0, 1.0, 2.0])
 
 [node name="Area3D2" parent="." unique_id=1595563047 instance=ExtResource("7_lgr22")]
 transform = Transform3D(0, -1.0000001, 0, 1.0000001, 0, 0, 0, 0, 1, 8.724537, 0, -3.6662712)
@@ -66,7 +48,3 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1
 [node name="HUD" parent="." unique_id=250146075 instance=ExtResource("6_lgr22")]
 
 [node name="TrackVisualiser" parent="." unique_id=30971489 instance=ExtResource("8_trn2v")]
-
-[node name="HostileHumanoid" parent="." unique_id=1808762767 instance=ExtResource("9_03owx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9382095, 0, -1.032)
-beat_timings = Array[float]([1.0, 1.0, 0.5])

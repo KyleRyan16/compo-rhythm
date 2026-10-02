@@ -3,6 +3,8 @@ extends AudioStreamPlayer
 # General conductor state
 var _is_playing: bool = false
 
+signal song_started
+
 # Audio thread state
 var _song_time_audio: float = -100
 
@@ -124,6 +126,7 @@ func start() -> void:
 
 	play()
 	_is_playing = true
+	song_started.emit()
 
 	# Capture the start of the song using the system clock.
 	_song_time_begin = (

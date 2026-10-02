@@ -24,7 +24,10 @@ height = 1.8
 
 [node name="HostileHumanoid" type="CharacterBody3D" unique_id=1808762767 node_paths=PackedStringArray("mesh")]
 script = ExtResource("1_tmm4x")
+path_update_rate = null
+lock_on_time = null
 mesh = NodePath("Dissolvable")
+beat_timings = null
 
 [node name="Dissolvable" parent="." unique_id=1344224893 instance=ExtResource("2_h4g5p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)

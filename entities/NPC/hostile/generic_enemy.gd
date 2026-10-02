@@ -9,6 +9,8 @@ extends EventSource
 
 @onready var body : CharacterBody3D = $"."
 
+var is_overlapping : bool = false
+
 ## the time spent locked onto a target before an attack can occur
 @export var lock_on_time : float = 1
 var time_locked_on : float = 0
@@ -24,6 +26,7 @@ func _ready() -> void:
 	nav_agent.target_desired_distance = 4
 
 func _physics_process(delta: float) -> void:
+	
 	if !is_alive:
 		return
 	
@@ -33,10 +36,7 @@ func _physics_process(delta: float) -> void:
 	if target:
 		time_locked_on += delta
 		if time_locked_on >= lock_on_time && events.is_empty():
-			var offset : float = 0
-			for timing in beat_timings:
-				offset += timing
-				queue_event(offset)
+			queue_events()
 	else:
 		time_locked_on = 0
 	
@@ -55,6 +55,12 @@ func _physics_process(delta: float) -> void:
 			on_velocity_computed(new_velocity)
 	
 	body.move_and_slide()
+
+func _on_area_3d_body_shape_entered(body_rid: RID, body: Node3D, body_shape_index: int, local_shape_index: int) -> void:
+	is_overlapping = true
+
+func _on_area_3d_body_shape_exited(body_rid: RID, body: Node3D, body_shape_index: int, local_shape_index: int) -> void:
+	is_overlapping = false
 
 func set_movement_target():
 	if target:
@@ -78,10 +84,9 @@ func entity_sight_updated(entity: Node3D, can_see: bool):
 	nav_agent.target_desired_distance = 4
 	time_since_last_path = path_update_rate
 
-
 func on_velocity_computed(safe_velocity: Vector3) -> void:
 	body.velocity = safe_velocity
-	
+
 func hit():
 	if !is_alive:
 		return
