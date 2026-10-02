@@ -19,54 +19,22 @@ shader_parameter/burn_emissive = 11.1999997720096
 shader_parameter/burn_color = Color(1, 0, 0, 1)
 shader_parameter/impact_position = Vector3(0.5, 0.965, 0)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mpfnf"]
-height = 1.8
-
 [node name="HostileHumanoid" type="CharacterBody3D" unique_id=1808762767 node_paths=PackedStringArray("mesh")]
 script = ExtResource("1_tmm4x")
-path_update_rate = null
-lock_on_time = null
 mesh = NodePath("Dissolvable")
-beat_timings = null
 
 [node name="Dissolvable" parent="." unique_id=1344224893 instance=ExtResource("2_h4g5p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 material_override = SubResource("ShaderMaterial_h4g5p")
 
-[node name="Area3D" type="Area3D" parent="." unique_id=909370480]
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=136026914]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
-shape = SubResource("CapsuleShape3D_mpfnf")
-debug_color = Color(0.54901963, 0, 0.08627451, 1)
-debug_fill = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=387922499]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
-shape = SubResource("CapsuleShape3D_mpfnf")
-debug_color = Color(0.54901963, 0, 0.08627451, 1)
-debug_fill = false
-
 [node name="Sight" parent="." unique_id=1165751035 instance=ExtResource("2_4dqoh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 fov = 360.0
-
-[node name="ProjectileSpawnPoint" type="Node3D" parent="." unique_id=805884002]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, -2.1616855)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=535924759]
 avoidance_enabled = true
 radius = 1.0
 use_3d_avoidance = true
-
-[node name="WeaponUser" type="Node" parent="." unique_id=1728510049]
-
-[node name="ProjectileWeapon" type="Node" parent="WeaponUser" unique_id=1761887025]
-metadata/_custom_type_script = "uid://blfr2xb316wb5"
-
-[node name="Node3D" type="Node3D" parent="." unique_id=400902]
 
 [connection signal="entity_sight_updated" from="Sight" to="." method="entity_sight_updated"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="on_velocity_computed"]

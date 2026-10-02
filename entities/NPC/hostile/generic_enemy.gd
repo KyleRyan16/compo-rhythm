@@ -1,6 +1,6 @@
 extends EventSource
 
-@onready var move_speed : float = 5
+@onready var move_speed : float = 3
 
 @onready var nav_agent : NavigationAgent3D = $NavigationAgent3D
 
@@ -8,8 +8,6 @@ extends EventSource
 @onready var time_since_last_path : float = path_update_rate
 
 @onready var body : CharacterBody3D = $"."
-
-var is_overlapping : bool = false
 
 ## the time spent locked onto a target before an attack can occur
 @export var lock_on_time : float = 1
@@ -55,12 +53,6 @@ func _physics_process(delta: float) -> void:
 			on_velocity_computed(new_velocity)
 	
 	body.move_and_slide()
-
-func _on_area_3d_body_shape_entered(body_rid: RID, body: Node3D, body_shape_index: int, local_shape_index: int) -> void:
-	is_overlapping = true
-
-func _on_area_3d_body_shape_exited(body_rid: RID, body: Node3D, body_shape_index: int, local_shape_index: int) -> void:
-	is_overlapping = false
 
 func set_movement_target():
 	if target:

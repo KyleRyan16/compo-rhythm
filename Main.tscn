@@ -7,6 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://5k2xvjhvmdnx" path="res://hud.tscn" id="6_lgr22"]
 [ext_resource type="PackedScene" uid="uid://bkumi1yk5hym2" path="res://floor.tscn" id="7_lgr22"]
 [ext_resource type="PackedScene" uid="uid://b8l4ac8wswerd" path="res://ui/timing/track_visualiser.tscn" id="8_trn2v"]
+[ext_resource type="PackedScene" uid="uid://cran6pes5ikt0" path="res://entities/NPC/hostile/generic_enemy.tscn" id="9_03owx"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_l3n1l"]
+vertices = PackedVector3Array(-5.25, 0.49999952, -8.75, -5.5, 0.49999952, -9.5, -9.5, 0.49999952, -9.5, -6.5, 0.49999952, -5.25, -1.5, 0.49999952, -5.5, -1.25, 0.49999952, -8.75, -9.5, 0.49999952, 3.5, -6.5, 0.49999952, 3.5, 7.75, 0.49999952, -9, 9.5, 0.49999952, -9, 9.5, 0.49999952, -9.5, 5.75, 0.49999952, -9.5, 5.5, 0.49999952, -8.75, 0.25, 0.49999952, -5.25, 0.25, 0.49999952, -4, 0.75, 0.49999952, -0.75, 7.75, 0.49999952, 0.5, -0.5, 0.49999952, -3.75, -0.25, 0.49999952, -1, 0.75, 0.49999952, 0.5, -1, 0.49999952, -0.75, -4.75, 0.49999952, -3.75, -4.75, 0.49999952, 5.5, -1, 0.49999952, 5.5, 0.75, 0.49999952, 5.5, 0, 0.49999952, 5.75, 0, 0.49999952, 9.5, 8, 0.49999952, 2, 9.5, 0.49999952, 9.5, 9.5, 0.49999952, 1.75, -6.5, 0.49999952, 5.5, -9.5, 0.49999952, 9.5)
+polygons = [PackedInt32Array(0, 3, 1), PackedInt32Array(1, 3, 2), PackedInt32Array(5, 4, 0), PackedInt32Array(0, 4, 3), PackedInt32Array(7, 6, 3), PackedInt32Array(3, 6, 2), PackedInt32Array(10, 9, 8), PackedInt32Array(12, 11, 8), PackedInt32Array(8, 11, 10), PackedInt32Array(14, 13, 15), PackedInt32Array(15, 13, 12), PackedInt32Array(15, 12, 8), PackedInt32Array(15, 8, 16), PackedInt32Array(17, 14, 18), PackedInt32Array(18, 14, 15), PackedInt32Array(16, 19, 15), PackedInt32Array(4, 5, 13), PackedInt32Array(13, 5, 12), PackedInt32Array(18, 20, 17), PackedInt32Array(17, 20, 21), PackedInt32Array(23, 22, 20), PackedInt32Array(20, 22, 21), PackedInt32Array(26, 25, 24), PackedInt32Array(16, 27, 19), PackedInt32Array(19, 27, 24), PackedInt32Array(29, 28, 27), PackedInt32Array(27, 28, 24), PackedInt32Array(24, 28, 26), PackedInt32Array(7, 30, 6), PackedInt32Array(6, 30, 31), PackedInt32Array(25, 26, 23), PackedInt32Array(23, 26, 22), PackedInt32Array(22, 26, 31), PackedInt32Array(30, 22, 31)]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trn2v"]
+albedo_color = Color(0, 0, 0, 1)
 
 [node name="Main" type="Node" unique_id=1939485485]
 script = ExtResource("1_fos0i")
@@ -15,10 +23,7 @@ script = ExtResource("1_fos0i")
 script = null
 
 [node name="CharacterBody3D" parent="." unique_id=1841788958 instance=ExtResource("6_3dxm6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1767695, 0.079)
-
-[node name="Area3D" parent="." unique_id=2119908304 instance=ExtResource("7_lgr22")]
-transform = Transform3D(2, 0, 0, 0, 0.001, 0, 0, 0, 2, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0565705, 0.1767695, -1.5685639)
 
 [node name="TestEventSource" parent="." unique_id=1791167107 instance=ExtResource("4_cm0pq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7834063, 1.0703907, 4.3115907)
@@ -28,23 +33,44 @@ beat_timings = Array[float]([1.0, 1.0, 1.0])
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5739765, 0.6655216, -3.6762476)
 beat_timings = Array[float]([0.0, 1.0, 2.0])
 
-[node name="Area3D2" parent="." unique_id=1595563047 instance=ExtResource("7_lgr22")]
-transform = Transform3D(0, -1.0000001, 0, 1.0000001, 0, 0, 0, 0, 1, 8.724537, 0, -3.6662712)
-
-[node name="Area3D3" parent="." unique_id=905592415 instance=ExtResource("7_lgr22")]
-transform = Transform3D(0, -1.0000001, 0, 1.0000001, 0, 0, 0, 0, 1, -5.535919, 0, 0)
-
 [node name="Area3D4" parent="." unique_id=1431732628 instance=ExtResource("7_lgr22")]
 transform = Transform3D(0, 4.3711392e-08, 1, 1.0000001, 0, 0, 0, 1.0000001, -4.371139e-08, 0, 0, 9.733982)
 
-[node name="Area3D5" parent="." unique_id=1447154830 instance=ExtResource("7_lgr22")]
-transform = Transform3D(0, 4.3711392e-08, 1, 1.0000001, 0, 0, 0, 1.0000001, -4.371139e-08, 0, 0, -9.717487)
-
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1792867621]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 10.893553, 0.7795086)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 15.024337, 0.7795086)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D" unique_id=1075270866]
 
 [node name="HUD" parent="." unique_id=250146075 instance=ExtResource("6_lgr22")]
 
 [node name="TrackVisualiser" parent="." unique_id=30971489 instance=ExtResource("8_trn2v")]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=936505909]
+navigation_mesh = SubResource("NavigationMesh_l3n1l")
+
+[node name="Area3D" parent="NavigationRegion3D" unique_id=2119908304 instance=ExtResource("7_lgr22")]
+transform = Transform3D(2, 0, 0, 0, 0.001, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="MeshInstance3D" parent="NavigationRegion3D/Area3D/CollisionShape3D" parent_id_path=PackedInt32Array(2119908304, 805644967) index="0" unique_id=1795663882]
+surface_material_override/0 = SubResource("StandardMaterial3D_trn2v")
+
+[node name="Area3D2" parent="NavigationRegion3D" unique_id=1595563047 instance=ExtResource("7_lgr22")]
+transform = Transform3D(0, -1.0000001, 0, 1.0000001, 0, 0, 0, 0, 1, 8.724537, 0, -3.6662712)
+
+[node name="Area3D3" parent="NavigationRegion3D" unique_id=905592415 instance=ExtResource("7_lgr22")]
+transform = Transform3D(0, -1.0000001, 0, 1.0000001, 0, 0, 0, 0, 1, -5.535919, 0, 0)
+
+[node name="Area3D4" parent="NavigationRegion3D" unique_id=1686252302 instance=ExtResource("7_lgr22")]
+transform = Transform3D(0, -2.9802322e-08, -0.53273314, 1.0000001, 0, 0, 0, -1.0000001, 1.5876685e-08, -2.9694154, 0, -4.6106567)
+
+[node name="Area3D6" parent="NavigationRegion3D" unique_id=1923173264 instance=ExtResource("7_lgr22")]
+transform = Transform3D(0, 1.0000001, 7.4098203e-09, 1.0000001, 0, 0, 0, 1.39090695e-08, -0.53273314, -0.19117737, 0, 2.3381817)
+
+[node name="Area3D5" parent="NavigationRegion3D" unique_id=1447154830 instance=ExtResource("7_lgr22")]
+transform = Transform3D(0, 4.3711392e-08, 1, 1.0000001, 0, 0, 0, 1.0000001, -4.371139e-08, 0, 0, -9.717487)
+
+[node name="HostileHumanoid" parent="." unique_id=1808762767 instance=ExtResource("9_03owx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7786725, 0.31899214, 2.5721493)
+beat_timings = Array[float]([1.0, 1.0, 0.5])
+
+[editable path="NavigationRegion3D/Area3D"]
