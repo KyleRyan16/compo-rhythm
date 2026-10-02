@@ -32,13 +32,6 @@ uniform float waveFrequency = 4.0;
 uniform sampler2D noise;
 uniform float noise_size = 1;
 
-vec2 wave(vec2 uv, float time) {
-    return vec2(
-        uv.x + sin(uv.y * waveFrequency * 5.0 + time) * waveAmplitude,
-        uv.y + sin(uv.x * waveFrequency + time) * waveAmplitude
-    );
-}
-
 void vertex() {
 	if (VERTEX != vec3(0,0,0))
 	{
@@ -53,7 +46,7 @@ void vertex() {
 
         vec3 vertex_displaced = vertices[index];
 
-        UV *= length(vertex_displaced) / length(VERTEX.xyz);
+        UV.y *= length(vertex_displaced) / length(VERTEX.xyz);
 
         VERTEX.xyz = vertex_displaced;
 		
@@ -61,13 +54,9 @@ void vertex() {
 }
 
 void fragment() {
-	vec2 uv = vec2(UV.x - 0.5, UV.y);
-	vec2 wave_uv = wave(uv, TIME);
-	vec4 ns = texture(noise, uv);
+	vec4 ns = texture(noise, UV);
 	
-
-	float dist = length(uv);
-	float ripple = sin(dist * -frequency + rippleRate * TIME) * amplitude / dist;
+	float ripple = sin(UV.y * -frequency + rippleRate * TIME) * amplitude / UV.y;
 
 	vec4 color;
 	color.rgb = wave_color;

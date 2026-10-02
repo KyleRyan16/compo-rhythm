@@ -6,7 +6,7 @@
 [ext_resource type="Shader" uid="uid://c80s3p4vesk83" path="res://common/effects/dissolve.gdshader" id="3_a1sb7"]
 [ext_resource type="Texture2D" uid="uid://c46xvf1efpphd" path="res://common/effects/perlin_noise.png" id="4_fgldw"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u4fsk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h4g5p"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_a1sb7")
@@ -28,7 +28,7 @@ mesh = NodePath("Dissolvable")
 
 [node name="Dissolvable" parent="." unique_id=1344224893 instance=ExtResource("2_h4g5p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
-material_override = SubResource("ShaderMaterial_u4fsk")
+material_override = SubResource("ShaderMaterial_h4g5p")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=909370480]
 collision_layer = 4
@@ -48,6 +48,7 @@ debug_fill = false
 
 [node name="Sight" parent="." unique_id=1165751035 instance=ExtResource("2_4dqoh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+fov = 360.0
 
 [node name="ProjectileSpawnPoint" type="Node3D" parent="." unique_id=805884002]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, -2.1616855)

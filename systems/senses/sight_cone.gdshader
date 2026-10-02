@@ -43,7 +43,7 @@ void vertex() {
 
 		vec3 vertex_displaced = vertices[index];
 
-		UV *= length(vertex_displaced) / length(VERTEX.xyz);
+		//UV *= length(vertex_displaced) / length(VERTEX.xyz);
 
 		VERTEX.xyz = vertex_displaced;
 		

@@ -48,25 +48,33 @@ func construct_vision_field(fov: float, radius: float):
 	var step : float = deg_to_rad(fov / subdivisions)
 	var rad : float = deg_to_rad(-fov / 2)
 	
-	var previous = get_point_position(radius, rad)
 	var center := Vector3.ZERO
-	var previous_uv : Vector2 = Vector2(0, previous.length() / radius)
+	var center_uv := Vector2(0.5, 0)
+	var center_index := subdivisions + 1
+	
+	var vertices : Array[Vector3] = []
+	var uvs :Array[Vector2] = []
+	
+	for i in range(subdivisions + 1):
+		var vertex := get_point_position(radius, rad)
+		vertices.append(vertex)
+		uvs.append(Vector2(float(i) / (subdivisions), vertex.length() / radius))
+		rad += step
+		
+	vertices.append(center)
+	uvs.append(center_uv)
 	
 	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
 
+	for i in vertices.size():
+		surface.set_uv(uvs[i])
+		surface.add_vertex(vertices[i])
+
 	for i in range(subdivisions):
-		rad += step
-		var current : Vector3 = get_point_position(radius, rad)
-		
-		surface.set_uv(Vector2(0.5, 0))
-		surface.add_vertex(center)
-		surface.set_uv(previous_uv)
-		surface.add_vertex(previous)
-		
-		previous_uv = Vector2(float(i) / (subdivisions -1), current.length() / radius)
-		surface.set_uv(previous_uv)
-		surface.add_vertex(current)
-		previous = current
+		var next_index = (i + 1)
+		surface.add_index(center_index)
+		surface.add_index(i)
+		surface.add_index(next_index)
 		
 	mesh = surface.commit()
 	
