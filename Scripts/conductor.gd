@@ -155,10 +155,10 @@ func get_current_beat() -> float:
 func get_beat_time(beat : float) -> float:
 	return beat * get_beat_duration()
 
-func add_event_to_track(next_beat_offset : float) -> BeatEvent:
+func add_event_to_track(next_beat : BeatEventSpec, timing : float) -> BeatEvent:
 	if !_is_playing || get_current_beat() < 0:
 		return
-	var event : BeatEvent = BeatEvent.create(ceil(get_current_beat()) + next_beat_offset)
+	var event : BeatEvent = BeatEvent.create(next_beat, ceil(get_current_beat()) + timing)
 	timing_track.add_event(event)
 	return event
 	

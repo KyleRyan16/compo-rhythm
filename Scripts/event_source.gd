@@ -1,4 +1,3 @@
-@abstract
 extends Node
 
 class_name EventSource
@@ -16,7 +15,7 @@ var is_active : bool = false
 @export var mesh : MeshInstance3D
 
 # the beats that are queued up
-@export var beat_timings : Array[float]
+@export var beat_combo : BeatCombo
 	
 func process_beat_event(event : BeatEvent, result : RuleSet.EventResult):
 	print("processing beat event, result: ",  RuleSet.EventResult.keys()[result])
@@ -29,10 +28,8 @@ func process_status_update(_event : BeatEvent, new_status: RuleSet.WindowStatus)
 		material.albedo_color = color
 
 func queue_events():
-	var offset : float = 0
-	for timing in beat_timings:
-		offset += timing
-		var event : BeatEvent = Conductor.add_event_to_track(offset)
+	for timing in beat_combo.timings.keys():
+		var event : BeatEvent = Conductor.add_event_to_track(beat_combo.timings[timing], timing)
 		if !event:
 			#TODO: don't let this fail silently
 			continue
