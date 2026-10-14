@@ -28,10 +28,15 @@ settings/addon_root_folder="res://addons/debug_draw_3d"
 [display]
 
 window/stretch/mode="canvas_items"
+window/vsync/vsync_mode=3
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_midi/plugin.cfg")
 
 [input]
 
-acknowledge_beatddasdfasd={
+acknowledge_beat={
 "deadzone": 0.2,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
