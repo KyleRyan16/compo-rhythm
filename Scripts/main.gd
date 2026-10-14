@@ -5,6 +5,7 @@ extends Node
 func _ready() -> void:
 	await get_tree().create_timer(0.5).timeout
 	Conductor.start()
+	Input.use_accumulated_input = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
